@@ -9,7 +9,9 @@ secret, cert-manaer-crd リソースについてはで ArgoCD から Sync 処理
 
 ### cer-manaer
 https://cert-manager.io/docs/installation/helm/
-
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.0/cert-manager.crds.yaml
+```
 ### argocd secert
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
