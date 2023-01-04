@@ -118,6 +118,27 @@ server:
           releaseName: v1-10-0
           valueFiles:
           - values.yaml
+    - name: kubernetes-dashboard
+      namespace: argocd
+      project: default
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: kubernetes-dashboard
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+      #syncPolicy:
+      #  automated:
+      #    prune: false
+      #    selfHeal: false
+      source:
+        repoURL: https://kubernetes.github.io/dashboard/
+        targetRevision: "6.0.0"
+        chart: kubernetes-dashboard
+        helm: 
+          releaseName: v6-0-0
+          valueFiles:
+          - https://raw.githubusercontent.com/AbeYuki/helm/main/kubernetes-dashboard/values_main_oci.yaml
         
 configs:
   repositories:
